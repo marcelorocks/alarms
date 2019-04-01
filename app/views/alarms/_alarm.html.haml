@@ -1,0 +1,11 @@
+.card.alarm-card
+  .row
+    .col-md-9
+      = alarm.description.upcase
+      %br/
+      = link_to 'upvote', upvote_alarm_path(alarm), remote: true, method: :patch, class: 'badge badge-success'
+    .col-md-3.alarm-timestamp
+      = alarm.created_at.strftime('%m/%d %H:%M')
+      %br/
+      .votes-container{id: "#{alarm.id}_votes_container"}
+        = render 'alarms/votes', alarm: alarm
